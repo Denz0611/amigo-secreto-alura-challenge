@@ -8,7 +8,7 @@ let reinicioRealizado = false;
 function agregarAmigo (){
     let agregarNombre = document.getElementById("amigo").value;
     if (agregarNombre){
-        //Si el sorteo ya fue realizado una vez se reiniciar el juego al ingresar un nombre nuevo
+        //Si el sorteo ya fue realizado una vez se reinicia el juego al ingresar un nombre nuevamente
         if (sorteoRealizado && !reinicioRealizado){
             reiniciar();
         }
@@ -46,6 +46,11 @@ function mostrarLista() {
 
 //Sortear un nombre 
 function sortearAmigo(){
+    if (sorteoRealizado) {
+        alert("El sorteo ya fue realizado. Por favor, inserte nuevos nombres para realizar un nuevo sorteo.");
+        return;
+    }
+
     if (amigos.length === 0){
         alert("Por favor, inserte un nombre.");
         return
@@ -87,4 +92,8 @@ limpiarSorteado();
 amigos = [];
 console.log(amigos);
 reinicioRealizado = true;
+// Restablecer las variables
+  reinicioRealizado = true;
+  sorteoRealizado = false; // Desactivar la alerta
+
 }
